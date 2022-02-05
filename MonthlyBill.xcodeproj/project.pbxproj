@@ -11,6 +11,7 @@
 		6E1D1D3127AEF9FA007F4FB6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1D1D3027AEF9FA007F4FB6 /* ContentView.swift */; };
 		6E1D1D3327AEF9FD007F4FB6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E1D1D3227AEF9FD007F4FB6 /* Assets.xcassets */; };
 		6E1D1D3627AEF9FD007F4FB6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E1D1D3527AEF9FD007F4FB6 /* Preview Assets.xcassets */; };
+		6E1D1D3D27AEFB7F007F4FB6 /* NuevoGastoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1D1D3C27AEFB7F007F4FB6 /* NuevoGastoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		6E1D1D3027AEF9FA007F4FB6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		6E1D1D3227AEF9FD007F4FB6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6E1D1D3527AEF9FD007F4FB6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		6E1D1D3C27AEFB7F007F4FB6 /* NuevoGastoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NuevoGastoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 			children = (
 				6E1D1D2E27AEF9FA007F4FB6 /* MonthlyBillApp.swift */,
 				6E1D1D3027AEF9FA007F4FB6 /* ContentView.swift */,
+				6E1D1D3C27AEFB7F007F4FB6 /* NuevoGastoView.swift */,
 				6E1D1D3227AEF9FD007F4FB6 /* Assets.xcassets */,
 				6E1D1D3427AEF9FD007F4FB6 /* Preview Content */,
 			);
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E1D1D3D27AEFB7F007F4FB6 /* NuevoGastoView.swift in Sources */,
 				6E1D1D3127AEF9FA007F4FB6 /* ContentView.swift in Sources */,
 				6E1D1D2F27AEF9FA007F4FB6 /* MonthlyBillApp.swift in Sources */,
 			);
