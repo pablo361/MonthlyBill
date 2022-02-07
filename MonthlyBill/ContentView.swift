@@ -11,17 +11,31 @@ struct ContentView: View {
     @State var mostrarView = false
     var tipoPago = ["Un Pago", "Cuotas","Suscripción"]
     @State var seleccionTipoPago = "Un Pago"
+    @State var gastos = [Gasto]()
+    var aPagarEsteMes : Double {
+        var pagar = 0.0
+        for gasto in gastos {
+            pagar += gasto.importedelMes
+        }
+        return pagar
+    }
     var body: some View {
         NavigationView{
-            Form{
-                Text("Hello, world!")
-                    .padding()
-                Picker("Tipo",selection: $seleccionTipoPago){
-                    ForEach(tipoPago,id:\.self){
-                        Text($0)
+            List{
+                ForEach(gastos){ gasto in
+                    VStack{
+                        Text(gasto.nombre)
+                            .font(.title)
+                            .fontWeight(.bold)
+                        Text("$\(gasto.importedelMes,specifier: "%.2f")")
+                            .font(.body)
+                            
                     }
-                }
-                }
+                
+            }
+                .onDelete(perform: borrar)
+        }
+            
                 .navigationBarItems(trailing: Button(
                 action:{
                     self.mostrarView.toggle()
@@ -31,13 +45,51 @@ struct ContentView: View {
                 }))
                 .sheet(isPresented: $mostrarView, content: {
                     NavigationView{
-                        NuevoGastoView()
-                            .navigationBarTitle(Text("Nuevo Gasto"))
-                    }
-                })
+                        NuevoGastoView(gastos : $gastos)
+                            .navigationBarTitle(Text("Nuevo Gasto"))}})
+                .onAppear(perform: cargaDatos)
+                .navigationTitle(Text("A pagar este mes \(aPagarEsteMes,specifier: "%.2f")"))
         
         }
     }
+    
+    func borrar(al numero: IndexSet){
+        gastos.remove(atOffsets: numero)
+        guardarDato()
+    }
+    
+    func getDirectorio()->URL{
+            let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+            return paths[0]
+        }
+        
+        
+        
+        func cargaDatos(){
+            let filename = getDirectorio().appendingPathComponent("LugaresGuardados")
+            do {
+                let data = try Data(contentsOf: filename)
+                self.gastos = try JSONDecoder().decode([Gasto].self, from: data) //dato que se cargara
+            } catch {
+                print("no se puede cargar")
+            }
+
+        }
+    
+    func guardarDato(){
+        do {
+            let filename = getDirectorio().appendingPathComponent("LugaresGuardados")
+            let data = try JSONEncoder().encode(self.gastos) //dato que se guardara
+            try data.write(to: filename, options: [.atomicWrite, .completeFileProtection])
+        } catch {
+            print("no se pudo guardar")
+        }
+
+
+    }
+    
+    
+
 }
 
 struct ContentView_Previews: PreviewProvider {
